@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">LinguaConnect Interpreters</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="emailIdField">Email Id</string>
+    <string name="passwordField">Password</string>
+    <string name="confirmPasswordField">Confirm Password</string>
+    <string name="updatePasswordButton">Update Password</string>
+    <string name="loginButton">Login</string>
+    <string name="registerField">New User? Register.</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="ratingField">Rating</string>
+    <string name="ageField">Age</string>
+    <string name="genderField">Gender</string>
+    <string name="companyField">Company</string>
+    <string name="designationField">Designation</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="locationField">Location</string>
+    <string name="nextButton">Next</string>
+    <string name="registerButton">Register</string>
+    <string name="saveButton">Save</string>
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="requestPasswordButton">Request Password</string>
+    <string name="displayLanguage">Language</string>
+
+    <string name="empty_string"></string>
+
+    <!-- JSON keys -->
+    <string name="email">user__email</string>
+    <string name="password">password</string>
+    <string name="first_name">user__first_name</string>
+    <string name="age">age</string>
+    <string name="last_name">user__last_name</string>
+    <string name="gender">gender</string>
+    <string name="company">company</string>
+    <string name="designation">designation</string>
+    <string name="phone_number">phone_number</string>
+    <string name="picture_url">picture_url</string>
+    <string name="location">location</string>
+    <string name="rating">rating</string>
+    <string name="nationality">nationality</string>
+    <string name="client_email">client_email</string>
+    <string name="interpreter_email">interpreter_email</string>
+    <string name="language">language</string>
+    <string name="end_time">end_time</string>
+    <string name="start_time">start_time</string>
+    <string name="client__picture_url">client__picture_url</string>
+    <string name="client__user__first_name">client__user__first_name</string>
+    <string name="client__user__last_name">client__user__last_name</string>
+    <string name="type">type</string>
+    <string name="reg_id">reg_id</string>
+    <string name="booking_id">id</string>
+    <string name="client_rating">client_rating</string>
+
+    <string name="login">Login</string>
+
+    <!-- Toast messages -->
+    <string name="noInternet">No internet connectivity. Please try again.</string>
+    <string name="sign_out_msg">Are you sure you want to sign out?</string>
+
+    <!-- Progress messages -->
+    <string name="signout_progress">Signing out ...</string>
+
+    <string name="gcm_defaultSenderId">579294394419</string>
+
+</resources>

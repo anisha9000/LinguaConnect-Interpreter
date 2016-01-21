@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.LinguaConnect"
+    tools:showIn="@layout/activity_lingua_connect"
+    >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/current_booking"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your booking is started."
+            android:id="@+id/current_booking_text"/>
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:textColor="@color/primary"
+            android:textSize="100dp"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/current_booking_text"
+            android:layout_centerHorizontal="true"
+            android:text="Chronometer" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/change_booking"
+            android:text="Start booking"
+            android:layout_below="@+id/current_booking_text"
+            android:onClick="changeCurrentBooking" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventLayout"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/event_image"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event Name"
+            android:layout_below="@+id/event_image"
+            android:id="@+id/event_name"
+            android:textColor="@color/primary_text"
+            android:textSize="16sp"
+            android:paddingTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event Timing"
+            android:layout_below="@+id/event_name"
+            android:id="@+id/event_timing"
+            android:textColor="@color/secondary_text"
+            android:textSize="12sp"
+            android:drawableLeft="@mipmap/ic_access_time_black"
+            android:drawablePadding="2dp"
+            android:paddingTop="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event Location"
+            android:layout_below="@+id/event_timing"
+            android:id="@+id/event_location"
+            android:textColor="@color/secondary_text"
+            android:drawableLeft="@mipmap/ic_location_on_black"
+            android:drawablePadding="2dp"
+            android:textSize="12sp"
+            android:paddingTop="4dp"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_below="@+id/event_location"
+            android:id="@+id/below_event_location"/>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lingua_image"
+            android:layout_below="@+id/below_event_location"
+            android:src="@mipmap/linguavista"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event Description"
+            android:layout_below="@+id/lingua_image"
+            android:singleLine="false"
+            android:id="@+id/event_description"
+            android:textColor="@color/secondary_text"
+            android:drawableLeft="@mipmap/ic_description_black"
+            android:drawablePadding="2dp"
+            android:textSize="12sp"
+            android:paddingTop="4dp"/>
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
+</ScrollView>
