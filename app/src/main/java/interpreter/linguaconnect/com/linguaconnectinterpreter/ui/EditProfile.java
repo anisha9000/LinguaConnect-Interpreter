@@ -1,12 +1,13 @@
 package interpreter.linguaconnect.com.linguaconnectinterpreter.ui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -15,15 +16,13 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.File;
 
 import interpreter.linguaconnect.com.linguaconnectinterpreter.AppController;
 import interpreter.linguaconnect.com.linguaconnectinterpreter.BuildConfig;
@@ -35,11 +34,16 @@ public class EditProfile extends AppCompatActivity {
 
     EditText etFirstName, etLastName, etPhone, etEmail;
     EditText etAge;
+    ImageView accountImage;
     RadioGroup rgGender;
     RadioButton rbMale, rbFemale;
     String genderSelected;
     TextView updatePassword;
     private String TAG = EditProfile.class.getName();
+
+    private static final int REQUEST_CHOOSE_PROFILE_IMAGE = 0xac23;
+    private File imageFile;
+    private String currentPhotoPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,26 +69,12 @@ public class EditProfile extends AppCompatActivity {
         } else if(Utility.getLocalString(this,Constants.USER_GENDER).equalsIgnoreCase("female")) {
             rbMale.setSelected(true);
         }
+
+        ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+        imageLoader.get(Utility.getLocalString(this, Constants.USER_PICTURE_URL),
+                ImageLoader.getImageListener(accountImage,R.mipmap.profile,R.mipmap.profile), 200, 200);
+
     }
-
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constants.PLACE_AUTOCOMPLETE_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                Place place = PlaceAutocomplete.getPlace(this, data);
-                etLocation.setText(place.getName());
-                Log.e(TAG, "Place: " + place.getName());
-            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
-                Status status = PlaceAutocomplete.getStatus(this, data);
-                // TODO: Handle the error.
-                Log.e(TAG, status.getStatusMessage());
-
-            } else if (resultCode == RESULT_CANCELED) {
-                // The user canceled the operation.
-            }
-        }
-    }*/
 
     private void initScreen() {
         etFirstName = (EditText) findViewById(R.id.first_name);
@@ -97,6 +87,7 @@ public class EditProfile extends AppCompatActivity {
         rbMale = (RadioButton) findViewById(R.id.radio_male);
         updatePassword = (TextView) findViewById(R.id.update_password);
         genderSelected = "male";
+        accountImage = (ImageView) findViewById(R.id.account_image);
 
         rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -118,6 +109,7 @@ public class EditProfile extends AppCompatActivity {
                 startActivity(new Intent(EditProfile.this, UpdatePassword.class));
             }
         });
+
     }
 
     public void saveProfile(View view) {

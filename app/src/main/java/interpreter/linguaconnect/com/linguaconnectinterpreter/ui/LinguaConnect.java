@@ -78,6 +78,10 @@ public class LinguaConnect extends AppCompatActivity implements fragmentDrawer.F
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.feed_activity), toolbar);
         drawerFragment.setDrawerListener(this);
 
+        if (drawerFragment != null) {
+            drawerFragment.setProfilePic();
+        }
+
         Log.e(TAG,"onCreate : register listener");
         registerReceiver(broadcastReceiver, new IntentFilter(MyGcmListenerService.BROADCAST_ACTION));
 

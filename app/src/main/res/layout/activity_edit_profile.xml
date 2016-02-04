@@ -39,6 +39,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/update_password"/>
 
+
             <LinearLayout
                 android:id="@+id/profile_basic_info"
                 android:layout_width="match_parent"

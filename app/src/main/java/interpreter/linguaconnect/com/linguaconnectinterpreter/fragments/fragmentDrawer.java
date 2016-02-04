@@ -23,9 +23,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import interpreter.linguaconnect.com.linguaconnectinterpreter.AppController;
 import interpreter.linguaconnect.com.linguaconnectinterpreter.R;
 import interpreter.linguaconnect.com.linguaconnectinterpreter.fragments.adapter.NavDrawerAdapter;
 import interpreter.linguaconnect.com.linguaconnectinterpreter.fragments.adapter.NavDrawerItem;
@@ -47,6 +50,7 @@ public class fragmentDrawer extends Fragment {
     private DrawerLayout mDrawerLayout;
     private NavDrawerAdapter adapter;
     private View containerView;
+    ImageView profileImage;
     private byte activityCode;
     private TextView userName;
     private HandleProgressBar progressBar;
@@ -98,6 +102,8 @@ public class fragmentDrawer extends Fragment {
         TextView userName = (TextView) layout.findViewById(R.id.drawer_user_name);
         userName.setText(Utility.getLocalString(getActivity(), Constants.USER_FIRST_NAME) + " "+
                 Utility.getLocalString(getActivity(), Constants.USER_LAST_NAME));
+        profileImage = (ImageView) layout.findViewById(R.id.avatarProfilePic);
+        profileImage.setOnClickListener(openProfileListener);
         ImageView profileImage = (ImageView) layout.findViewById(R.id.avatarProfilePic);
         profileImage.setOnClickListener(openProfileListener);
 
@@ -305,6 +311,14 @@ public class fragmentDrawer extends Fragment {
 
     public void closeDrawer() {
         mDrawerLayout.closeDrawer(containerView);
+    }
+
+    public void setProfilePic() {
+        String profilePicUrl = Utility.getLocalString(getActivity(), Constants.USER_PICTURE_URL);
+        Log.e(TAG,"avtar pic in drawer : "+profilePicUrl);
+        ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+        imageLoader.get(profilePicUrl,
+                ImageLoader.getImageListener(profileImage,R.mipmap.profile,R.mipmap.profile));
     }
 
 }
