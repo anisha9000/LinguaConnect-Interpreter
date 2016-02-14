@@ -138,7 +138,9 @@ public class LinguaConnect extends AppCompatActivity implements fragmentDrawer.F
             RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             p.addRule(RelativeLayout.BELOW, R.id.current_booking_text);
-            btChangeBooking.setLayoutParams(p);
+            if(btChangeBooking != null) {
+                btChangeBooking.setLayoutParams(p);
+            }
         } else if (Utility.getLocalString(this,Constants.currentEvent).equals("cancel_booking") ||
                 Utility.getLocalString(this,Constants.currentEvent).equals("end_booking")) {
             isBookingReceived = false;
@@ -150,7 +152,7 @@ public class LinguaConnect extends AppCompatActivity implements fragmentDrawer.F
             showRatingDialog();
             Utility.saveLocalString(this, Constants.currentEvent, "");
         } else if(Utility.getLocalString(this,Constants.currentEvent).equals("start_booking")) {
-            isBookingReceived = true;
+            isBookingReceived = false;
             Log.e(TAG,"isBooking recieved on updateUi:"+isBookingReceived);
             findViewById(R.id.current_booking).setVisibility(View.VISIBLE);
             findViewById(R.id.eventLayout).setVisibility(View.GONE);
@@ -556,6 +558,7 @@ public class LinguaConnect extends AppCompatActivity implements fragmentDrawer.F
         JSONObject registerJSON = createJSONForUpdateBooking(isBookingReceived);
         String url = Constants.BASE_URL + Constants.UPDATE_CURRENT_BOOKING;
 
+
         Log.e(TAG,url+","+registerJSON);
 
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
@@ -568,7 +571,7 @@ public class LinguaConnect extends AppCompatActivity implements fragmentDrawer.F
                             progress.hideProgressBar();
                         }
                         Log.e(TAG,"response:"+response);
-                        if(isBookingReceived) {
+                        if(LinguaConnect.isBookingReceived) {
                             LinguaConnect.isBookingReceived = false;
                             if(counter != null) {
                                 counter.setBase(SystemClock.elapsedRealtime());
