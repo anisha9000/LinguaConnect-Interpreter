@@ -40,8 +40,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         holder.tvDuration.setText(String.valueOf(historyDetail.getStartTime()));
         holder.tvStatus.setText(historyDetail.getStatus());
         ImageLoader imageLoader = AppController.getInstance().getImageLoader();
-        imageLoader.get(historyDetail.getPictureUrl(),
-                ImageLoader.getImageListener(holder.ivInterpreterImage,R.mipmap.profile,R.mipmap.profile));
+        if(historyDetail.getPictureUrl() != null) {
+            imageLoader.get(historyDetail.getPictureUrl(),
+                    ImageLoader.getImageListener(holder.ivInterpreterImage,R.mipmap.profile,R.mipmap.profile));
+        }
 
         setRating(holder, historyDetail.getRating());
         setTime(holder.tvDuration,historyDetail.getStartTime(),historyDetail.getEndTime());

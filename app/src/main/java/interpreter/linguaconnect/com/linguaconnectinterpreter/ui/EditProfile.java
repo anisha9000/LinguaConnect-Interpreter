@@ -65,9 +65,11 @@ public class EditProfile extends AppCompatActivity {
         etEmail.setText(Utility.getLocalString(this,Constants.USER_EMAIL));
         etAge.setText(String.valueOf(Utility.getLocalInt(this,Constants.USER_AGE)));
         if(Utility.getLocalString(this,Constants.USER_GENDER).equalsIgnoreCase("male")) {
-            rbFemale.setSelected(true);
+            rgGender.clearCheck();
+            rbMale.setChecked(true);
         } else if(Utility.getLocalString(this,Constants.USER_GENDER).equalsIgnoreCase("female")) {
-            rbMale.setSelected(true);
+            rgGender.clearCheck();
+            rbFemale.setChecked(true);
         }
 
         ImageLoader imageLoader = AppController.getInstance().getImageLoader();
@@ -115,7 +117,7 @@ public class EditProfile extends AppCompatActivity {
     public void saveProfile(View view) {
         final JSONObject registerJSON = createJSONForEdit();
 
-        String url = Constants.BASE_URL + Constants.UPDATE_CLIENT;
+        String url = Constants.BASE_URL + Constants.UPDATE_INTERPRETER;
 
         Log.e(TAG,registerJSON+","+url);
 

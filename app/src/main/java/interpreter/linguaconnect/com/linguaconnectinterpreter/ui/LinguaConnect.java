@@ -239,7 +239,7 @@ public class LinguaConnect extends AppCompatActivity implements fragmentDrawer.F
 
         builder.setView(view);
 
-        builder.setTitle("Rate us")
+        builder.setTitle("Rate the client")
                 .setPositiveButton("Yes",
                         new DialogInterface.OnClickListener() {
                             @Override
@@ -622,7 +622,8 @@ public class LinguaConnect extends AppCompatActivity implements fragmentDrawer.F
             jsonObject.put(getString(R.string.booking_id), Integer.parseInt(bookingId));
             jsonObject.put("app-version", BuildConfig.VERSION_CODE);
             jsonObject.put("app-version-name",BuildConfig.VERSION_NAME);
-            if(isBookingReceived) {
+            Log.e(TAG,"setting json:"+LinguaConnect.isBookingReceived);
+            if(LinguaConnect.isBookingReceived) {
                 jsonObject.put("type", "start");
             } else {
                 jsonObject.put("type", "end");
