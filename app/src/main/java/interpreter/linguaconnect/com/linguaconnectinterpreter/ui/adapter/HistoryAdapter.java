@@ -37,7 +37,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         holder.tvName.setText(historyDetail.getName());
         holder.tvLanguage.setText(activity.getResources().getString(R.string.displayLanguage)
                 + historyDetail.getLanguage());
-        holder.tvDuration.setText(String.valueOf(historyDetail.getStartTime()));
+        holder.tvDuration.setText(String.valueOf(historyDetail.getDuration()));
         holder.tvStatus.setText(historyDetail.getStatus());
         ImageLoader imageLoader = AppController.getInstance().getImageLoader();
         if(historyDetail.getPictureUrl() != null) {
@@ -46,7 +46,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         }
 
         setRating(holder, historyDetail.getRating());
-        setTime(holder.tvDuration,historyDetail.getStartTime(),historyDetail.getEndTime());
+        holder.tvBookingTime.setText(historyDetail.getBookingTime());
+
 
     }
 
@@ -56,7 +57,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
         tvDuration.setVisibility(View.GONE);
         /*SimpleDateFormat dateFormat = new SimpleDateFormat();
-        Date startDate = new Date(startTime);
+        Date startDate = new Date(duration);
         Date endDate = new Date(endTime);
 
         long difference = startDate.getTime() - endDate.getTime();
@@ -73,7 +74,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
 
-        TextView tvName, tvLanguage, tvDuration, tvStatus;
+        TextView tvName, tvLanguage, tvDuration, tvStatus, tvBookingTime;
         ImageView ivInterpreterImage;
         ImageView[] stars;
 
@@ -91,6 +92,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             stars[2]=(ImageView)itemView.findViewById(R.id.rate3);
             stars[3]=(ImageView)itemView.findViewById(R.id.rate4);
             stars[4]=(ImageView)itemView.findViewById(R.id.rate5);
+            tvBookingTime = (TextView) itemView.findViewById(R.id.booking_time);
         }
     }
 
@@ -101,7 +103,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
     void setRating(ViewHolder holder,int rating){
         for(int i=1;i<=5;i++) {
-            if(i<rating) {
+            if(i<=rating) {
                 holder.stars[i-1].setImageResource(R.mipmap.ic_star_black);
             } else if (i > rating) {
                 holder.stars[i-1].setImageResource(R.mipmap.ic_star_border_black);

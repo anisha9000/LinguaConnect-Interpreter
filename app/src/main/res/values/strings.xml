@@ -45,6 +45,9 @@
     <string name="language">language</string>
     <string name="end_time">end_time</string>
     <string name="start_time">start_time</string>
+    <string name="duration">duration</string>
+    <string name="status">status</string>
+    <string name="booking_time">booking_time</string>
     <string name="client__picture_url">client__picture_url</string>
     <string name="client__user__first_name">client__user__first_name</string>
     <string name="client__user__last_name">client__user__last_name</string>

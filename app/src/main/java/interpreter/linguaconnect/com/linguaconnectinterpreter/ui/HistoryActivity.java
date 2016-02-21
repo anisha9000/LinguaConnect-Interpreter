@@ -80,11 +80,12 @@ public class HistoryActivity extends AppCompatActivity {
                                             historyObject.optString(getString(R.string.client__user__first_name)),
                                             historyObject.optString(getString(R.string.client__user__last_name)),
                                             historyObject.optString(getString(R.string.language)),
-                                            historyObject.optString(getString(R.string.start_time)),
+                                            historyObject.optString(getString(R.string.duration)),
                                             historyObject.optString(getString(R.string.end_time)),
                                             historyObject.optString(getString(R.string.client__picture_url)),
                                             historyObject.optInt(getString(R.string.client_rating)),
-                                            historyObject.optString("status")
+                                            historyObject.optString("status"),
+                                            historyObject.optString(getString(R.string.booking_time))
                                     ));
 
                                     mAdapter = new HistoryAdapter(responseList, HistoryActivity.this);

@@ -4,12 +4,15 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
         android:id="@+id/interpreter_image"
         android:src="@mipmap/profile"
         android:layout_alignTop="@+id/interpreter_info"
-        android:layout_alignBottom="@+id/interpreter_info" />
+        android:layout_alignBottom="@+id/interpreter_info"
+        android:padding="15dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -95,11 +98,23 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15.2.2015"
+        android:id="@+id/booking_time"
+        android:textColor="@color/secondary_text"
+        android:textSize="12sp"
+        android:paddingRight="15dp"
+        android:layout_below="@+id/interpreter_info"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/divider"
-        android:layout_below="@+id/interpreter_info" />
+        android:layout_below="@+id/booking_time" />
 
 
 </RelativeLayout>

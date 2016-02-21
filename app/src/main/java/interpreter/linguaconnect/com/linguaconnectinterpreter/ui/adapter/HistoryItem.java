@@ -5,18 +5,19 @@ package interpreter.linguaconnect.com.linguaconnectinterpreter.ui.adapter;
  */
 public class HistoryItem {
     int rating;
-    String pictureUrl, firstName, lastName, language, startTime, endTime, status;
+    String pictureUrl, firstName, lastName, language, duration, endTime, status, bookingTime;
 
-    public HistoryItem(String firstName, String lastName, String language, String startTime,
-                       String endTime, String pictureUrl, int rating, String status) {
+    public HistoryItem(String firstName, String lastName, String language, String duration,
+                       String endTime, String pictureUrl, int rating, String status, String bookingTime) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.language = language;
-        this.startTime = startTime;
+        this.duration = this.duration;
         this.endTime = endTime;
         this.pictureUrl = pictureUrl;
         this.rating = rating;
         this.status = status;
+        this.bookingTime = bookingTime;
     }
 
     public String getName() {
@@ -39,11 +40,15 @@ public class HistoryItem {
         return endTime;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getDuration() {
+        return duration;
     }
 
     public String getStatus() {
         return status;
+    }
+
+    public String getBookingTime() {
+        return bookingTime;
     }
 }
